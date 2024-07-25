@@ -7,25 +7,23 @@
 </head>
 <body>
     <div class="sidebar">
-        <nav>
-            <button> <img src="d36f9822139c0ac88c0b.svg"> Today</button>
-            <button> <img src="9b379fd7e3a5de9a79c1.svg"> Week</button>
-            <button> <img src="ed23e5ee5fa25d47c399.svg"> Done</button>
-        </nav>
         <div class="project-title">
             <h1>Projects</h1>
             <button class="add"><img src="0e72c90086543b8e28c1.svg"></button>
         </div>
         <nav>
             <div class="project-list">
-                <button class="project"> # &nbsp; Default</button>
+                <button class="project"> # &nbsp; All ToDo Task</button>
+            </div>
+            <div class="project-list">
+                <button class="project"> # &nbsp; Coding</button>
                 <button class="delete"><img src="571239a91539db891d8d.svg"></button>
             </div>
         </nav>
     </div>
     <div class="content">
         <div class="todo-header">
-            <h1>Today</h1>
+            <h1>ToDo</h1>
             <button class="addTodo"><img src="0e72c90086543b8e28c1.svg"></button>
         </div>
         <br>
@@ -39,5 +37,29 @@
             <div class="hr"><hr></div>
         </div>  
     </div>
+    <dialog id="todoModal">
+        <header>
+            <h1>Add ToDo</h1>
+        </header>
+        <form id="todoForm">
+            <label for="title"></label>
+            <input type="text" id="title" placeholder="Title" required>
+
+            <label for="description"></label>
+            <textarea id="description" placeholder="Description"></textarea>
+
+            <label for="dueDate"></label>
+            <input type="date" id="dueDate">
+
+            <label for="priority">Priority Level:</label>
+            <select id="priority" name="priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
 <script defer src="main.js"></script></body>
 </html>
