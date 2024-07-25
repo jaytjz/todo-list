@@ -5,6 +5,8 @@
     --text-color: #e4e6eb;
     --main-color: #18191A;
     --img-height: 30px;
+    --green: #33b249;
+    --red: #D11A2A;
 }
 
 body{
@@ -15,11 +17,6 @@ body{
     font-family: "Roboto";
     margin: 0;
     height: 100vh;
-}
-
-nav{
-    display: flex;
-    flex-direction: column;
 }
 
 button {
@@ -67,7 +64,7 @@ img{
 }
 
 .add:hover{
-    background-color: #33b249;
+    background-color: var(--green);
 }
 
 .project-title, 
@@ -86,7 +83,7 @@ img{
 }
 
 .delete:hover, .todo-delete:hover {
-    background-color: #D11A2A;
+    background-color: var(--red);
 }
 
 .project-list:hover .delete {
@@ -115,7 +112,7 @@ img{
 }
 
 .todo-header .addTodo:hover {
-    background-color: #33b249;
+    background-color: var(--green);
 }
 
 .todo-list, .todo-container, .todo-description, .todo-dueDate{
@@ -157,7 +154,11 @@ img{
     background-color: #3a3b3c;
 }
 
-#myModal {
+.calendarBtn {
+    display: flex;
+}
+
+#todoModal {
     background-color: var(--sidebar-color);
     color: var(--text-color);
     border: none;
@@ -186,4 +187,12 @@ input, select {
 button[type="submit"]{
     margin: 5px;
     background-color: #007BFF;
+}
+
+.garbageBtn:hover {
+    background-color: var(--red);
+}
+
+.strikethrough {
+    text-decoration: line-through;
 }

@@ -7,25 +7,23 @@
 </head>
 <body>
     <div class="sidebar">
-        <nav>
-            <button> <img src="img/today.svg"> Today</button>
-            <button> <img src="img/week.svg"> Week</button>
-            <button> <img src="img/garbage.svg"> Done</button>
-        </nav>
         <div class="project-title">
             <h1>Projects</h1>
             <button class="add"><img src="img/add.svg"></button>
         </div>
         <nav>
             <div class="project-list">
-                <button class="project"> # &nbsp; Default</button>
+                <button class="project"> # &nbsp; All ToDo Task</button>
+            </div>
+            <div class="project-list">
+                <button class="project"> # &nbsp; Coding</button>
                 <button class="delete"><img src="img/delete.svg"></button>
             </div>
         </nav>
     </div>
     <div class="content">
         <div class="todo-header">
-            <h1>Today</h1>
+            <h1>ToDo</h1>
             <button class="addTodo"><img src="img/add.svg"></button>
         </div>
         <br>
@@ -39,5 +37,29 @@
             <div class="hr"><hr></div>
         </div>  
     </div>
+    <dialog id="todoModal">
+        <header>
+            <h1>Add ToDo</h1>
+        </header>
+        <form id="todoForm">
+            <label for="title"></label>
+            <input type="text" id="title" placeholder="Title" required>
+
+            <label for="description"></label>
+            <textarea id="description" placeholder="Description"></textarea>
+
+            <label for="dueDate"></label>
+            <input type="date" id="dueDate">
+
+            <label for="priority">Priority Level:</label>
+            <select id="priority" name="priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
 </body>
 </html>

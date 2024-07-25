@@ -1,54 +1,44 @@
 import { todo } from "./todo.js";
+import unchecked from "./img/unchecked.svg"
+import calendar from "./img/calendar.svg"
+import garbage from "./img/garbage.svg"
 
-export const addDialog = function () {
-    const body = document.querySelector("body");
-    const dialog = document.createElement("dialog");
-    dialog.id = "myModal";
-    dialog.innerHTML = `
-        <header>
-            <h1>Add ToDo</h1>
-        </header>
-        <form id="todoForm">
-            <label for="title"></label>
-            <input type="text" id="title" placeholder="Title">
+function setDefaultDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
 
-            <label for="description"></label>
-            <input type="text" id="description" placeholder="Description">
+    const dateString = `${year}-${month}-${day}`;
+    document.getElementById('dueDate').value = dateString;
+}
 
-            <label for="dueDate"></label>
-            <input type="date" id="dueDate">
+const updateDisplay = function (newTodo) {
+    const content = document.querySelector(".content");
 
-            <label for="priority">Priority Level:</label>
-            <select id="priority" name="priority">
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-            </select>
+    const display = document.createElement("div");
+    display.classList.add("todo-container");
 
-            <button type="submit">Submit</button>
-        </form>
-    `;
+    display.innerHTML = `
+        <button class="tickBtn"><img src="${unchecked}" alt="Unchecked"></button>
+        <h2 class="todo-title">${newTodo.getTitle()}</h2>
+        <p class="todo-priority">Priority: ${newTodo.getPriority()}</p>
+        <p class="todo-description">${newTodo.getDescription()}</p>
+        <p class="todo-dueDate">
+            <button class="calendarBtn"><img src="${calendar}" alt="Calendar"></button> 
+            ${newTodo.getDueDate()}
+        </p>
+        <button class="garbageBtn"><img src="${garbage}" alt="Garbage"></button>
+        <div class="hr"><hr></div>
+    `
+    content.appendChild(display);
 
-    body.append(dialog);
-};
-
-export const openForm = function () {
-    var modal = document.getElementById("myModal");
-    var addBtn = document.querySelector(".addTodo");
-
-    addBtn.onclick = function() {
-        modal.showModal();
-    }
-
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.close();
-        }
-    };
 }
 
 export const getFormData = function () {
     var form = document.getElementById("todoForm");
+    setDefaultDate();
+
     form.addEventListener("submit", function(event){
         event.preventDefault();
 
@@ -62,31 +52,24 @@ export const getFormData = function () {
 
         updateDisplay(newTodo);
 
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("todoModal");
         modal.close();
+
+        this.reset();
+        setDefaultDate();
     })
 }
 
-export const updateDisplay = function () {
-    const content = document.querySelector(".content");
+export const todoPopUp = function () {
+    document.querySelector(".addTodo").addEventListener("click", () => {
+        var modal = document.getElementById("todoModal");
 
-    const data = getFormData();
-
-    const display = document.createElement("div");
-    display.classList.add("todo-container");
-
-    display.innerHTML = `
-        <button class="tickBtn"><img src="img/unchecked.svg" alt="Unchecked"></button>
-        <h2 class="todo-title">${newTodo.getTitle()}</h2>
-        <p class="todo-priority">Priority: ${newTodo.getPriority()}</p>
-        <p class="todo-description">${newTodo.getDescription()}</p>
-        <p class="todo-dueDate">
-            <button class="calendarBtn"><img src="img/calendar.svg" alt="Calendar"></button> 
-            Due Date: ${newTodo.getDueDate()}
-        </p>
-        <button class="garbageBtn"><img src="img/garbage.svg" alt="Garbage"></button>
-        <div class="hr"><hr></div>
-    `
-    content.appendChild(display);
-
+        modal.showModal();
+    
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.close();
+            }
+        };
+    })
 }
