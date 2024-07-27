@@ -2,6 +2,7 @@ import { todo } from "./todo.js";
 import unchecked from "./img/unchecked.svg"
 import calendar from "./img/calendar.svg"
 import garbage from "./img/garbage.svg"
+import edit from "./img/edit.svg"
 
 function setDefaultDate() {
     const today = new Date();
@@ -19,13 +20,16 @@ const updateDisplay = function (newTodo) {
     const display = document.createElement("div");
     display.classList.add("todo-container");
 
+    const todoId = newTodo.getId(); 
+    display.setAttribute("data-id", todoId);
+
     display.innerHTML = `
         <button class="tickBtn"><img src="${unchecked}" alt="Unchecked"></button>
         <h2 class="todo-title">${newTodo.getTitle()}</h2>
-        <p class="todo-priority">Priority: ${newTodo.getPriority()}</p>
+        <button class="editBtn"><img src="${edit}"></button>
         <p class="todo-description">${newTodo.getDescription()}</p>
         <p class="todo-dueDate">
-            <button class="calendarBtn"><img src="${calendar}" alt="Calendar"></button> 
+            <img src="${calendar}" alt="Calendar">
             ${newTodo.getDueDate()}
         </p>
         <button class="garbageBtn"><img src="${garbage}" alt="Garbage"></button>
@@ -53,10 +57,11 @@ export const getFormData = function () {
         updateDisplay(newTodo);
 
         var modal = document.getElementById("todoModal");
-        modal.close();
 
         this.reset();
         setDefaultDate();
+
+        modal.close();
     })
 }
 

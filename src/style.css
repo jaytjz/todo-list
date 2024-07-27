@@ -74,7 +74,7 @@ img{
     align-items: center;
 }
 
-.project-title .add, .delete{
+.project-title .add, .del{
     visibility: hidden;
 }
 
@@ -82,11 +82,11 @@ img{
     visibility: visible;
 }
 
-.delete:hover, .todo-delete:hover {
+.del:hover, .todo-delete:hover {
     background-color: var(--red);
 }
 
-.project-list:hover .delete {
+.project-list:hover .del {
     visibility: visible;
 }
 
@@ -150,15 +150,11 @@ img{
     grid-column: 1/4;
 }
 
-.calendarBtn:hover, .tickBtn:hover,.garbageBtn:hover {
+.editBtn:hover, .tickBtn:hover,.garbageBtn:hover {
     background-color: #3a3b3c;
 }
 
-.calendarBtn {
-    display: flex;
-}
-
-#todoModal {
+#todoModal, #projectModal {
     background-color: var(--sidebar-color);
     color: var(--text-color);
     border: none;
@@ -166,6 +162,10 @@ img{
     padding: 30px 50px;
     width: 30vw;
     height: 50vh;
+}
+
+#projectModal {
+    height: 25vh;
 }
 
 form{
@@ -195,4 +195,13 @@ button[type="submit"]{
 
 .strikethrough {
     text-decoration: line-through;
+}
+
+.dueDateInput {
+    width: 200px;
+    background-color: var(--text-color);
+    flex-grow: 0;
+    border: none;
+    border-radius: 5px;
+    height: var(--img-height);
 }

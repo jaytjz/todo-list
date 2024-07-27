@@ -13,26 +13,26 @@
         </div>
         <nav>
             <div class="project-list">
-                <button class="project"> # &nbsp; All ToDo Task</button>
+                <button class="project"> # &nbsp; All ToDos</button>
             </div>
             <div class="project-list">
                 <button class="project"> # &nbsp; Coding</button>
-                <button class="delete"><img src="571239a91539db891d8d.svg"></button>
+                <button class="del"><img src="571239a91539db891d8d.svg"></button>
             </div>
         </nav>
     </div>
     <div class="content">
         <div class="todo-header">
-            <h1>ToDo</h1>
+            <h1>All ToDos</h1>
             <button class="addTodo"><img src="0e72c90086543b8e28c1.svg"></button>
         </div>
         <br>
-        <div class="todo-container">
+        <div class="todo-container" data-id="1">
             <button class="tickBtn"><img src="4acb1836996d669357a1.svg"></button>
             <h2 class="todo-title">Title</h2>
-            <p class="todo-priority"> Priority: High</p>
+            <button class="editBtn"><img src="eecf65e02cd3cefefc50.svg"></button>
             <p class="todo-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis modi obcaecati officiis deserunt possimus libero laudantium saepe iste. Soluta autem consequuntur deleniti. Animi placeat aliquid consectetur aspernatur architecto dignissimos recusandae! </p>
-            <p class="todo-dueDate"> <button class="calendarBtn"><img src="e6550b88bfed8e1e1df1.svg"></button> Due Date</p>
+            <p class="todo-dueDate"><img src="e6550b88bfed8e1e1df1.svg"> 2024-07-27</p>
             <button class="garbageBtn"><img src="ed23e5ee5fa25d47c399.svg"></button>
             <div class="hr"><hr></div>
         </div>  
@@ -57,6 +57,42 @@
                 <option value="medium">Medium</option>
                 <option value="low">Low</option>
             </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
+    <dialog id="editModal">
+        <header>
+            <h1>Edit ToDo</h1>
+        </header>
+        <form id="editForm">
+            <input type="hidden" id="todoId">
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+    
+            <label for="description">Description:</label>
+            <textarea id="description"></textarea>
+    
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate">
+    
+            <label for="priority">Priority Level:</label>
+            <select id="priority" name="priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+    
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
+    <dialog id="projectModal">
+        <header>
+            <h1>Add Project</h1>
+        </header>
+        <form id="projectForm">
+            <label for="project"></label>
+            <input type="text" id="project" placeholder="Project Name" required>
 
             <button type="submit">Submit</button>
         </form>
