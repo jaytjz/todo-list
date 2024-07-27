@@ -12,12 +12,8 @@
             <button class="add"><img src="img/add.svg"></button>
         </div>
         <nav>
-            <div class="project-list">
+            <div class="project-list" data-id="1">
                 <button class="project"> # &nbsp; All ToDos</button>
-            </div>
-            <div class="project-list">
-                <button class="project"> # &nbsp; Coding</button>
-                <button class="del"><img src="img/delete.svg"></button>
             </div>
         </nav>
     </div>
@@ -26,16 +22,7 @@
             <h1>All ToDos</h1>
             <button class="addTodo"><img src="img/add.svg"></button>
         </div>
-        <br>
-        <div class="todo-container" data-id="1">
-            <button class="tickBtn"><img src="img/unchecked.svg"></button>
-            <h2 class="todo-title">Title</h2>
-            <button class="editBtn"><img src="img/edit.svg"></button>
-            <p class="todo-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis modi obcaecati officiis deserunt possimus libero laudantium saepe iste. Soluta autem consequuntur deleniti. Animi placeat aliquid consectetur aspernatur architecto dignissimos recusandae! </p>
-            <p class="todo-dueDate"><img src="img/calendar.svg"> 2024-07-27</p>
-            <button class="garbageBtn"><img src="img/garbage.svg"></button>
-            <div class="hr"><hr></div>
-        </div>  
+        <br> 
     </div>
     <dialog id="todoModal">
         <header>
@@ -50,13 +37,6 @@
 
             <label for="dueDate"></label>
             <input type="date" id="dueDate">
-
-            <label for="priority">Priority Level:</label>
-            <select id="priority" name="priority">
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-            </select>
 
             <button type="submit">Submit</button>
         </form>
@@ -75,13 +55,6 @@
     
             <label for="dueDate">Due Date:</label>
             <input type="date" id="dueDate">
-    
-            <label for="priority">Priority Level:</label>
-            <select id="priority" name="priority">
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-            </select>
     
             <button type="submit">Submit</button>
         </form>

@@ -1,4 +1,6 @@
 import del from "./img/delete.svg"
+import { projectList } from ".";
+import project from "./project";
 
 const updateSidebar = function (project) {
     const nav = document.querySelector("nav");
@@ -16,9 +18,10 @@ export const projectFormData = function () {
     form.addEventListener("submit", function(event){
         event.preventDefault();
 
-        const project = document.getElementById("project").value;
-
-        updateSidebar(project);
+        const projectVal = document.getElementById("project").value;
+        updateSidebar(projectVal);
+        projectList.push(new project(projectVal));
+        console.log(projectList);
 
         var modal = document.getElementById("projectModal");
 

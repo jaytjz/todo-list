@@ -154,7 +154,7 @@ img{
     background-color: #3a3b3c;
 }
 
-#todoModal, #projectModal {
+#todoModal, #projectModal, #editModal {
     background-color: var(--sidebar-color);
     color: var(--text-color);
     border: none;

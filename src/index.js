@@ -2,9 +2,18 @@ import './style.css';
 import "./index.html";
 import { todoPopUp, getFormData } from  "./todoPopUp.js";
 import { projectFormData, projectPopUp } from './projectPopUp.js';
+import project from './project.js';
+import "./projectList.js"
 import unchecked from "./img/unchecked.svg";
 import checked from "./img/checked.svg";
 import calendar from "./img/calendar.svg"
+
+export const projectList = [];
+const allToDos = new project(document.querySelector(".project").textContent.trim().replace(/^#\s+/, ''));
+projectList.push(allToDos)
+console.log(projectList);
+console.log(projectList[0].projectName);
+console.log(projectList[0].tasks);
 
 document.addEventListener('click', function(event) {
     // Handle delete functionality
@@ -34,15 +43,6 @@ document.addEventListener('click', function(event) {
         }
     }
 
-    //handle sidebar delete functionality
-    const delBtn = event.target.closest('.del');
-    if (delBtn) {
-        const projectList = delBtn.closest('.project-list');
-        if (projectList) {
-            projectList.remove();
-        }
-    }
-
     //Handle edit functionality
     const editBtn = event.target.closest('.editBtn');
     if (editBtn) {
@@ -54,13 +54,11 @@ document.addEventListener('click', function(event) {
         const title = todoContainer.querySelector('.todo-title').textContent;
         const description = todoContainer.querySelector('.todo-description').textContent;
         const dueDate = todoContainer.querySelector('.todo-dueDate').textContent.replace('Due Date', '').trim();
-        const priority = 'medium';
 
         editForm.querySelector('#todoId').value = todoId;
         editForm.querySelector('#title').value = title;
         editForm.querySelector('#description').value = description;
         editForm.querySelector('#dueDate').value = dueDate; // Ensure this is in yyyy-mm-dd format
-        editForm.querySelector('#priority').value = priority;
 
         editModal.showModal();
     }
@@ -73,7 +71,6 @@ document.addEventListener('click', function(event) {
         const title = editForm.querySelector('#title').value;
         const description = editForm.querySelector('#description').value;
         const dueDate = editForm.querySelector('#dueDate').value;
-        const priority = editForm.querySelector('#priority').value;
 
         const todoContainer = document.querySelector(`.todo-container[data-id="${todoId}"]`);
         todoContainer.querySelector('.todo-title').textContent = title;
@@ -82,6 +79,15 @@ document.addEventListener('click', function(event) {
 
         editModal.close();
     });
+
+    //handle sidebar delete functionality
+    const delBtn = event.target.closest('.del');
+    if (delBtn) {
+        const projectList = delBtn.closest('.project-list');
+        if (projectList) {
+            projectList.remove();
+        }
+    }
 });
 
 todoPopUp();

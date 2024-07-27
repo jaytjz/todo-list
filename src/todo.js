@@ -3,14 +3,12 @@ export class todo{
     #title;
     #description;
     #dueDate;
-    #priority;
 
-    constructor(title, description, dueDate, priority) {
+    constructor(title, description, dueDate) {
         this.#id = this.generateId();
         this.#title = title;
         this.#description = description;
         this.#dueDate = dueDate;
-        this.#priority = priority;
     }
 
     generateId() {
@@ -20,7 +18,6 @@ export class todo{
     getId() {
         return this.#id;
     }
-
 
     getTitle() {
         return this.#title;
@@ -32,9 +29,5 @@ export class todo{
 
     getDueDate() {
         return this.#dueDate;
-    }
-
-    getPriority() {
-        return this.#priority;
     }
 }

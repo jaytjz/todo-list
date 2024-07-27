@@ -3,6 +3,7 @@ import unchecked from "./img/unchecked.svg"
 import calendar from "./img/calendar.svg"
 import garbage from "./img/garbage.svg"
 import edit from "./img/edit.svg"
+import { projectList } from "./index.js";
 
 function setDefaultDate() {
     const today = new Date();
@@ -14,7 +15,7 @@ function setDefaultDate() {
     document.getElementById('dueDate').value = dateString;
 }
 
-const updateDisplay = function (newTodo) {
+export const updateDisplay = function (newTodo) {
     const content = document.querySelector(".content");
 
     const display = document.createElement("div");
@@ -49,10 +50,18 @@ export const getFormData = function () {
         const title = document.getElementById("title").value;
         const description = document.getElementById("description").value;
         const dueDate = document.getElementById("dueDate").value;
-        const priority = document.getElementById("priority").value;
 
-        const newTodo = new todo(title, description, dueDate, priority);
-        console.log(newTodo);
+        var header = document.querySelector(".todo-header h1").textContent;
+
+        const newTodo = new todo(title, description, dueDate);
+        projectList[0].tasks.push(newTodo);
+        console.log(projectList[0].tasks);
+
+        projectList.forEach(element => {
+            if(element.projectName === header && element.projectName !== "All ToDos"){
+                element.tasks.push(newTodo);
+            }
+        })
 
         updateDisplay(newTodo);
 
