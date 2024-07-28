@@ -7,8 +7,4 @@ export default class project {
     addProjectToList(projectList) {
         projectList.push(this);
     };
-
-    getProjectName() {
-        return this.projectName;
-    }
 };

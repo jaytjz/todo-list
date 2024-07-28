@@ -1,5 +1,6 @@
 import './style.css';
 import "./index.html";
+import todo from "./todo.js";
 import { todoPopUp, getFormData } from  "./todoPopUp.js";
 import { projectFormData, projectPopUp } from './projectPopUp.js';
 import project from './project.js';
@@ -20,7 +21,14 @@ document.addEventListener('click', function(event) {
     const garbageBtn = event.target.closest('.garbageBtn');
     if (garbageBtn) {
         const todoContainer = garbageBtn.closest('.todo-container');
+        const dataId = todoContainer.getAttribute('data-id');
         if (todoContainer) {
+            const header = document.querySelector(".todo-header h1").textContent;
+            projectList.forEach(element => {
+                if(element.projectName === header || element.projectName === "All ToDos"){
+                    element.tasks = element.tasks.filter(todo => todo.getId() !== dataId);
+                }
+            })
             todoContainer.remove();
         }
     }
