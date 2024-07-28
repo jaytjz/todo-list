@@ -1,6 +1,5 @@
 import './style.css';
 import "./index.html";
-import todo from "./todo.js";
 import { todoPopUp, getFormData } from  "./todoPopUp.js";
 import { projectFormData, projectPopUp } from './projectPopUp.js';
 import project from './project.js';
@@ -8,13 +7,14 @@ import "./projectList.js"
 import unchecked from "./img/unchecked.svg";
 import checked from "./img/checked.svg";
 import calendar from "./img/calendar.svg"
+import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage.js"
 
 export const projectList = [];
+
+window.onload = loadFromLocalStorage();
+
 const allToDos = new project(document.querySelector(".project").textContent.trim().replace(/^#\s+/, ''));
 projectList.push(allToDos)
-console.log(projectList);
-console.log(projectList[0].projectName);
-console.log(projectList[0].tasks);
 
 document.addEventListener('click', function(event) {
     // Handle delete functionality
@@ -30,6 +30,7 @@ document.addEventListener('click', function(event) {
                 }
             })
             todoContainer.remove();
+            saveToLocalStorage();
         }
     }
 
@@ -85,6 +86,18 @@ document.addEventListener('click', function(event) {
         todoContainer.querySelector('.todo-description').textContent = description;
         todoContainer.querySelector('.todo-dueDate').innerHTML = `<img src="${calendar}"> ${dueDate}`;
 
+        // Update the task in projectList
+        projectList.forEach(project => {
+            project.tasks.forEach(task => {
+                if (task.getId() === todoId) {
+                    task.title = title;
+                    task.description = description;
+                    task.dueDate = dueDate;
+                }
+            });
+        });
+
+        saveToLocalStorage(); 
         editModal.close();
     });
 
@@ -94,6 +107,7 @@ document.addEventListener('click', function(event) {
         const projectList = delBtn.closest('.project-list');
         if (projectList) {
             projectList.remove();
+            saveToLocalStorage();
         }
     }
 });

@@ -1,6 +1,7 @@
 import del from "./img/delete.svg"
 import { projectList } from ".";
 import project from "./project";
+import { saveToLocalStorage } from "./localStorage";
 
 const updateSidebar = function (project) {
     const nav = document.querySelector("nav");
@@ -27,6 +28,7 @@ export const projectFormData = function () {
 
         this.reset();
         modal.close();
+        saveToLocalStorage();
     })
 }
 

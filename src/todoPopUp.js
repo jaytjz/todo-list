@@ -4,6 +4,7 @@ import calendar from "./img/calendar.svg"
 import garbage from "./img/garbage.svg"
 import edit from "./img/edit.svg"
 import { projectList } from "./index.js";
+import { saveToLocalStorage } from "./localStorage.js"
 
 function setDefaultDate() {
     const today = new Date();
@@ -38,6 +39,7 @@ export const updateDisplay = function (newTodo) {
     `
     content.appendChild(display);
 
+    saveToLocalStorage();
 }
 
 export const getFormData = function () {
